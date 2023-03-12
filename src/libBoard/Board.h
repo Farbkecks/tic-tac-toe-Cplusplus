@@ -1,5 +1,5 @@
 #pragma once
-#include "PlayerType.h"
+#include "Player.h"
 #include <iostream>
 #include <string>
 
