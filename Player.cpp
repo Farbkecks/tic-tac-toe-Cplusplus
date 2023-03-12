@@ -10,14 +10,11 @@ Player::Player(PlayerType type)
 
 std::ostream &operator<<(std::ostream &strm, const Player &a)
 {
-    if (a.PlayerSymbole == X)
-    {
-        return strm << "X";
-    }
-    else
-    {
-        return strm << "O";
-    }
+        return strm << a.PlayerSymbole;
+}
+
+PlayerType Player::getPlayer() {
+    return this->PlayerSymbole;
 }
 
 int Player::getPos()

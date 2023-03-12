@@ -13,6 +13,7 @@ public:
     Player(PlayerType type);
     int getPos();
     void changePlayer();
+    PlayerType getPlayer();
 };
 
 std::ostream &operator<<(std::ostream &strm, const Player &a);
