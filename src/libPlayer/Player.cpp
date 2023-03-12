@@ -13,35 +13,11 @@ std::ostream &operator<<(std::ostream &strm, const Player &a)
         return strm << a.PlayerSymbole;
 }
 
-PlayerType Player::getPlayer() {
+PlayerType Player::getType() {
     return this->PlayerSymbole;
 }
 
-int Player::getPos()
-{
-    int pos;
-    string input;
-    while (true)
-    {
-        cout << *this << " ist dran, Welche Position: ";
-        cin >> input;
-        try
-        {
-            pos = stoi(input);
-        }
-        catch (...)
-        {
-            cout << "nur Zahlen" << endl;
-            continue;
-        }
-        if (pos < 1 || pos > 9)
-        {
-            cout << "nur Zahlen von 1 bis 9" << endl;
-            continue;
-        }
-        return pos - 1;
-    }
-}
+
 
 void Player::changePlayer()
 {

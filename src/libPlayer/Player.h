@@ -11,9 +11,8 @@ private:
 public:
     // int getPos();
     Player(PlayerType type);
-    int getPos();
     void changePlayer();
-    PlayerType getPlayer();
+    PlayerType getType();
 };
 
 std::ostream &operator<<(std::ostream &strm, const Player &a);

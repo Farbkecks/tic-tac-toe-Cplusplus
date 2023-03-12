@@ -15,7 +15,7 @@ int main()
      {
          board.show();
          player.changePlayer();
-         board.change(player.getPos(), player.getPlayer());
+         board.change(board.getPos(player.getType()), player.getType());
          if (board.checkWin())
          {
              break;
