@@ -9,7 +9,7 @@ private:
     friend std::ostream &operator<<(std::ostream &strm, const Player &a);
 
 public:
-    // int getPos();
+    // int getUserInput();
     Player(PlayerType type);
     void changePlayer();
     PlayerType getType();

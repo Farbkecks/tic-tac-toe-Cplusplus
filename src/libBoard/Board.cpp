@@ -2,8 +2,9 @@
 
 using namespace std;
 
-Board::Board()
-{
+
+Board::Board(int eva) {
+    this->evaluation = eva;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     for (int i = 0; i < laengeBoard; i++)
     {
@@ -11,12 +12,12 @@ Board::Board()
     }
 }
 
- int Board::getRound()
+int Board::getRound() const
  {
      return this->round;
  }
 
-int Board::getPos(PlayerType type)
+int Board::getUserInput(const PlayerType& type)
 {
     int pos;
     string input;
@@ -91,23 +92,23 @@ void Board::show()
     }
 }
 
- void Board::change(int pos, PlayerType symbol)
+ void Board::setPos(const int& pos, PlayerType symbol)
  {
-     if (board[pos] != X && board[pos] != O)
-     {
-         board[pos] = symbol;
-     }
-     round++;
+    if (board[pos] != X && board[pos] != O)
+    {
+        board[pos] = symbol;
+    }
+    round++;
  }
 
- bool Board::checkWin()
+ PlayerType Board::checkWin() const
  {
      for (int i = 0; i < 3; i++)
      {
          if (board[0 + i] == board[3 + i] && board[3 + i] == board[6 + i])
          {
              if(board[0+i] == EMPTY) continue;
-             return true;
+             return board[0+i];
          }
      }
 
@@ -116,16 +117,40 @@ void Board::show()
          if (board[0 + i] == board[1 + i] && board[1 + i] == board[2 + i])
          {
              if(board[0+i] == EMPTY) continue;
-             return true;
+             return board[0+i];
          }
      }
      if (board[0] == board[4] && board[4] == board[8])
      {
-         if(board[0] != EMPTY) return true;
+         if(board[0] != EMPTY) return board[0];
      }
      if (board[2] == board[4] && board[4] == board[6])
      {
-         if(board[2] != EMPTY) return true;
+         if(board[2] != EMPTY) return board[2];
      }
-     return false;
+     return EMPTY;
  }
+
+int Board::getLaengeBoard() const {
+    return this->laengeBoard;
+}
+
+PlayerType Board::getPos(const int& pos) const {
+    return this->board[pos];
+}
+
+bool Board::hasEmptyPace() const {
+    for(int num : board){
+        if(num != EMPTY) return false;
+    }
+    return true;
+}
+
+int Board::getEvaluation() const {
+    return this->evaluation;
+}
+
+void Board::setEvaluation(const int& eva) {
+    this->evaluation = eva;
+}
+
