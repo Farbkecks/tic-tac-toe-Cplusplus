@@ -13,7 +13,7 @@ namespace {
 
 Board MinMax::minmax(const Board& board, bool turn, double depth, bool start) {
     Board bestBoard = board;
-    bool firstBoard = false;
+    bool firstBoard = true;
     int mult = turn ? 1:-1;
     auto funkt = turn ? greater : less;
     PlayerType type = turn ? X : O;
@@ -29,8 +29,8 @@ Board MinMax::minmax(const Board& board, bool turn, double depth, bool start) {
         }else{
             newBoard = MinMax::minmax(newBoard,!turn , depth/2, false);
         }
-        if(!firstBoard){
-            firstBoard = true;
+        if(firstBoard){
+            firstBoard = false;
             bestBoard = newBoard;
             if(!start) bestBoard.resetPos(i);
         }

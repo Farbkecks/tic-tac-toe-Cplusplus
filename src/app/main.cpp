@@ -19,15 +19,16 @@ int main()
 //    return 0;
     Player player(O);
     int round = 0;
+    board.show();
     while (round != 9)
     {
         round++;
-        board.show();
         player.changePlayer();
         if(player.getType() == X){
             board.setPos(board.getUserInput(player.getType()), player.getType());
         }else{
             board = MinMax::minmax(board, false, 1, true);
+            board.show();
         }
         if (board.checkWin() != EMPTY)
         {
