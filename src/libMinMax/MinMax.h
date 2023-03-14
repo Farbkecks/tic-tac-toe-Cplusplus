@@ -2,5 +2,5 @@
 
 class MinMax {
 public:
-    static Board minmax(const Board& board, Player player, int depth);
+    static Board minmax(const Board& board, bool turn, int depth);
 };

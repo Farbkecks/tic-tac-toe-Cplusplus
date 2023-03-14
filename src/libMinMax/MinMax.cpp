@@ -1,26 +1,38 @@
 #include "MinMax.h"
 
-
-Board MinMax::minmax(const Board& board, Player player, int depth) {
-    int mult;
-    Board bestBoard;
-    int bestEvaluation;
-    switch(player.getType()){
-        case PlayerType::X: mult = 1; break;
-        case PlayerType::O: mult = -1; break;
-        default: throw 126;
+namespace {
+    bool weniger(int x, int y){
+        return x < y;
     }
-    for(int i=0; i<board.getLaengeBoard(); i++){
-        if(board.getPos(i) == EMPTY){
-            Board newBoard = board;
-            newBoard.setPos(i, player.getType());
-            if(newBoard.checkWin() != EMPTY){
-                newBoard.setEvaluation(mult * depth);
-            }
-            if(newBoard.getEvaluation() > bestEvaluation){
-                bestEvaluation = newBoard.getEvaluation();
-                bestBoard = newBoard;
-            }
-        }
+
+    bool mehr(int x, int y){
+        return x > y;
     }
 }
+
+
+Board MinMax::minmax(const Board& board, bool turn, int depth) {
+    Board bestBoard = board;
+    int mult = turn ? 1:-1;
+    auto funkt = turn ? mehr : weniger;
+    PlayerType type = turn ? X : O;
+
+    for(int i=0; i<board.getLaengeBoard(); i++){
+        if(board.getPos(i) != EMPTY){
+            continue;
+        }
+        Board newBoard = board;
+        newBoard.setPos(i, type);
+        if(newBoard.checkWin() != EMPTY){
+            newBoard.setEvaluation(mult * depth);
+        }else{
+            newBoard = MinMax::minmax(newBoard,!turn , depth+1);
+        }
+        if(funkt(newBoard.getEvaluation(), bestBoard.getEvaluation())){
+            bestBoard = newBoard;
+        }
+    }
+    return bestBoard;
+}
+
+

@@ -10,19 +10,17 @@ using namespace std;
 int main()
 {
     Board board;
-    Player player(X);
     board.setPos(0,O);
-    board.setPos(1,O);
+    board.setPos(1,X);
     board.setPos(6,O);
-    board.setPos(2,X);
     board.setPos(3,X);
-    board.setPos(4,X);
     board.show();
-    MinMax::minmax(board, player, 1);
+    board = MinMax::minmax(board, true, 1);
+    board.show();
 
 
     return 0;
-
+    Player player(O);
     while (board.getRound() != 9)
     {
         board.show();

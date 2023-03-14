@@ -7,7 +7,7 @@
 class Board
 {
 private:
-    int laengeBoard = 9;
+    static const int laengeBoard = 9;
     PlayerType board[9];
     int round = 0;
     int evaluation;
