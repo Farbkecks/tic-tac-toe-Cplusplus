@@ -9,7 +9,7 @@ class Board
 private:
     static const int laengeBoard = 9;
     PlayerType board[9];
-    int evaluation;
+    double evaluation;
     HANDLE hConsole;
 
 public:
@@ -21,7 +21,7 @@ public:
     int getLaengeBoard() const;
     PlayerType getPos(const int& pos) const;
     bool hasEmptyPace() const;
-    int getEvaluation() const;
-    void setEvaluation(const int& eva);
+    double getEvaluation() const;
+    void setEvaluation(const double & eva);
     void resetPos(int i);
 };

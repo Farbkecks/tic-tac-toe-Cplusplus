@@ -141,11 +141,11 @@ bool Board::hasEmptyPace() const {
     return true;
 }
 
-int Board::getEvaluation() const {
+double Board::getEvaluation() const {
     return this->evaluation;
 }
 
-void Board::setEvaluation(const int& eva) {
+void Board::setEvaluation(const double& eva) {
     this->evaluation = eva;
 }
 

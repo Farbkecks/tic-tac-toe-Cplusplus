@@ -2,17 +2,17 @@
 #include <limits>
 
 namespace {
-    bool less(int x, int y){
+    bool less(double x, double y){
         return x < y;
     }
 
-    bool greater(int x, int y){
+    bool greater(double x, double y){
         return x > y;
     }
 }
 
 
-Board MinMax::minmax(const Board& board, bool turn, int depth, bool start) {
+Board MinMax::minmax(const Board& board, bool turn, double depth, bool start) {
     Board bestBoard = board;
     bool firstBoard = false;
     int mult = turn ? 1:-1;
@@ -28,7 +28,7 @@ Board MinMax::minmax(const Board& board, bool turn, int depth, bool start) {
         if(newBoard.checkWin() != EMPTY){
             newBoard.setEvaluation(mult * depth);
         }else{
-            newBoard = MinMax::minmax(newBoard,!turn , depth+1, false);
+            newBoard = MinMax::minmax(newBoard,!turn , depth/2, false);
         }
         if(!firstBoard){
             firstBoard = true;
