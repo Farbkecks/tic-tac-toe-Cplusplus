@@ -12,10 +12,6 @@ Board::Board(int eva) {
     }
 }
 
-int Board::getRound() const
- {
-     return this->round;
- }
 
 int Board::getUserInput(const PlayerType& type)
 {
@@ -98,7 +94,6 @@ void Board::show()
     {
         board[pos] = symbol;
     }
-    round++;
  }
 
  PlayerType Board::checkWin() const
@@ -152,5 +147,9 @@ int Board::getEvaluation() const {
 
 void Board::setEvaluation(const int& eva) {
     this->evaluation = eva;
+}
+
+void Board::resetPos(int i) {
+    board[i] = EMPTY;
 }
 
