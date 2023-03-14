@@ -9,25 +9,17 @@ using namespace std;
 int main()
 {
     Board board;
-//    board.setPos(0,O);
-//    board.setPos(1,X);
-//    board.setPos(6,O);
-//    board.setPos(3,X);
-//    board.show();
-//    board = MinMax::minmax(board, true, 1, true);
-//    board.show();
-//    return 0;
     Player player(O);
-    int round = 0;
     board.show();
-    while (round != 9)
+    while (true)
     {
-        round++;
         player.changePlayer();
         if(player.getType() == X){
             board.setPos(board.getUserInput(player.getType()), player.getType());
+            if(!MinMax::canWin(board, false)) break;
         }else{
             board = MinMax::minmax(board, false, 1, true);
+            if(!MinMax::canWin(board, true)) break;
             board.show();
         }
         if (board.checkWin() != EMPTY)

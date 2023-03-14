@@ -42,4 +42,24 @@ Board MinMax::minmax(const Board& board, bool turn, double depth, bool start) {
     return bestBoard;
 }
 
+bool MinMax::canWin(const Board &board, bool turn) {
+    if(board.checkWin() != EMPTY) return true;
+    PlayerType type = turn ? X : O;
+    for(int i=0; i<Board::getLaengeBoard(); i++){
+        if(board.getPos(i) != EMPTY){
+            continue;
+        }
+        Board newBoard = board;
+        newBoard.setPos(i, type);
+        if(newBoard.checkWin() != EMPTY){
+            return true;
+        }else{
+            if(MinMax::canWin(newBoard,!turn)) return true;
+        }
+    }
+    return false;
+}
+
+
+
 
