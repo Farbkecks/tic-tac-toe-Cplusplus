@@ -1,5 +1,4 @@
 #include "MinMax.h"
-#include <limits>
 
 namespace {
     bool less(double x, double y){
@@ -19,7 +18,7 @@ Board MinMax::minmax(const Board& board, bool turn, double depth, bool start) {
     auto funkt = turn ? greater : less;
     PlayerType type = turn ? X : O;
 
-    for(int i=0; i<board.getLaengeBoard(); i++){
+    for(int i=0; i<Board::getLaengeBoard(); i++){
         if(board.getPos(i) != EMPTY){
             continue;
         }

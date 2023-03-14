@@ -29,4 +29,4 @@ void Player::changePlayer()
     {
         PlayerSymbole = X;
     }
-};
+}

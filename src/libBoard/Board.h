@@ -18,9 +18,8 @@ public:
     void setPos(const int& pos, PlayerType symbol);
     PlayerType checkWin() const;
     int getUserInput(const PlayerType& type);
-    int getLaengeBoard() const;
+    static int getLaengeBoard() ;
     PlayerType getPos(const int& pos) const;
-    bool hasEmptyPace() const;
     double getEvaluation() const;
     void setEvaluation(const double & eva);
     void resetPos(int i);

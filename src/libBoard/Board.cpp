@@ -126,20 +126,14 @@ void Board::show()
      return EMPTY;
  }
 
-int Board::getLaengeBoard() const {
-    return this->laengeBoard;
+int Board::getLaengeBoard() {
+    return laengeBoard;
 }
 
 PlayerType Board::getPos(const int& pos) const {
     return this->board[pos];
 }
 
-bool Board::hasEmptyPace() const {
-    for(int num : board){
-        if(num != EMPTY) return false;
-    }
-    return true;
-}
 
 double Board::getEvaluation() const {
     return this->evaluation;

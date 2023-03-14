@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Board.h"
 #include "Player.h"
 #include "MinMax.h"
@@ -25,7 +24,6 @@ int main()
         round++;
         board.show();
         player.changePlayer();
-        int pos;
         if(player.getType() == X){
             board.setPos(board.getUserInput(player.getType()), player.getType());
         }else{
