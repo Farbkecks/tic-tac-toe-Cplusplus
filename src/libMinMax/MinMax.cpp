@@ -2,7 +2,7 @@
 #include <limits>
 
 namespace {
-    bool weniger(int x, int y){
+    bool less(int x, int y){
         return x < y;
     }
 
@@ -16,7 +16,7 @@ Board MinMax::minmax(const Board& board, bool turn, int depth, bool start) {
     Board bestBoard = board;
     bool firstBoard = false;
     int mult = turn ? 1:-1;
-    auto funkt = turn ? greater : weniger;
+    auto funkt = turn ? greater : less;
     PlayerType type = turn ? X : O;
 
     for(int i=0; i<board.getLaengeBoard(); i++){
